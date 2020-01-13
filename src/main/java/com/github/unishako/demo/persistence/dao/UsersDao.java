@@ -1,6 +1,6 @@
-package com.github.unishako.demo.common.persistence.dao;
+package com.github.unishako.demo.persistence.dao;
 
-import com.github.unishako.demo.common.persistence.entity.Users;
+import com.github.unishako.demo.persistence.entity.Users;
 import org.seasar.doma.*;
 import org.seasar.doma.boot.ConfigAutowireable;
 

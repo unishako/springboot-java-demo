@@ -1,4 +1,4 @@
-package com.github.unishako.demo.common.persistence.entity;
+package com.github.unishako.demo.persistence.entity;
 
 import lombok.Data;
 import org.seasar.doma.Entity;

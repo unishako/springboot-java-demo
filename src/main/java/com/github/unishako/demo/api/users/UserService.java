@@ -1,9 +1,6 @@
 package com.github.unishako.demo.api.users;
 
-import com.github.unishako.demo.common.exception.BadRequestException;
-import com.github.unishako.demo.common.exception.NotFoundException;
-import com.github.unishako.demo.common.exception.UnauthorizedException;
-import com.github.unishako.demo.common.persistence.entity.Users;
+import com.github.unishako.demo.persistence.entity.Users;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
