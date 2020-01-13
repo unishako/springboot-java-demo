@@ -25,7 +25,8 @@ compileJava.dependsOn processResources
 dependencies {
 	//implementation 'org.springframework.boot:spring-boot-starter-security'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
-	implementation 'org.seasar.doma.boot:doma-spring-boot-starter:1.2.1'
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'com.github.rozidan:modelmapper-spring-boot-starter:2.3.1'
 	compileOnly 'org.projectlombok:lombok'
 	runtimeOnly 'org.postgresql:postgresql'
 	annotationProcessor 'org.projectlombok:lombok'
