@@ -4,6 +4,7 @@ import com.github.unishako.demo.common.exception.NotFoundException;
 import com.github.unishako.demo.persistence.entity.Users;
 import com.github.unishako.demo.persistence.repository.UsersRepository;
 import lombok.RequiredArgsConstructor;
+import org.apache.logging.log4j.util.Strings;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
@@ -34,14 +35,15 @@ public class UserService {
         return list;
     }
 
-
-    private <T1, T2> List<T2> convertDto(T1 list) {
-        List<T2> json = modelMapper.map(list, List.class);
-        return json;
-    }
-
     private List<Users> getAllUsers(String name) {
-        List<Users> list = usersRepository.findAll();
+
+        List<Users> list;
+
+        if (Strings.isEmpty(name)) {
+            list = usersRepository.findAll();
+        } else {
+            list = usersRepository.findByNameContaining(name);
+        }
         if (list.size() == 0) {
             throw new NotFoundException();
         }

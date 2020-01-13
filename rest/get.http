@@ -2,3 +2,11 @@ GET http://localhost:8080/api/users/search
 Accept: application/json
 
 ###
+GET http://localhost:8080/api/users/search?name=園田
+Accept: application/json
+
+###
+GET http://localhost:8080/api/users/auth
+Accept: application/json
+
+###
