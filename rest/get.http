@@ -2,11 +2,15 @@ GET http://localhost:8080/api/users/search
 Accept: application/json
 
 ###
-GET http://localhost:8080/api/users/search?name=園田
+GET http://localhost:8080/api/users/search?name=テスト
 Accept: application/json
 
 ###
 GET http://localhost:8080/api/users/auth
-Accept: application/json
+Authorization: Basic user password
+
+###
+GET http://localhost:8080/api/users/auth
+Authorization: Basic dXNlcjpwYXNzd2Q=
 
 ###

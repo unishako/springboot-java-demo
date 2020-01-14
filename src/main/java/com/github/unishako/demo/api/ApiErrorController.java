@@ -9,7 +9,7 @@ public class ApiErrorController implements ErrorController {
 
     @RequestMapping("/error")
     public void handleError() {
-        // レスポンスボディに何も返さない
+        // エラーの場合、レスポンスボディには何も返さない
     }
 
     @Override
