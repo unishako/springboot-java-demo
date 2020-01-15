@@ -1,11 +1,11 @@
 package com.github.unishako.demo.api.users;
 
 import com.github.unishako.demo.common.exception.NotFoundException;
+import com.github.unishako.demo.common.mapper.ListMapper;
 import com.github.unishako.demo.persistence.entity.Users;
 import com.github.unishako.demo.persistence.repository.UsersRepository;
 import lombok.RequiredArgsConstructor;
 import org.apache.logging.log4j.util.Strings;
-import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,9 +16,9 @@ public class UserService {
 
     private final UsersRepository usersRepository;
 
-    private final ModelMapper modelMapper;
+    private final ListMapper listMapper;
 
-    public List<Users> search(String name) {
+    public List<UserDto> search(String name) {
 
         // 認証チェック
         //throw new UnauthorizedException();
@@ -30,9 +30,9 @@ public class UserService {
         List<Users> list = getAllUsers(name);
 
         // Entity->Dto変換
-        //List<UserDto> json = convertDto(list);
+        List<UserDto> json = listMapper.convertDto(list, UserDto.class);
 
-        return list;
+        return json;
     }
 
     private List<Users> getAllUsers(String name) {

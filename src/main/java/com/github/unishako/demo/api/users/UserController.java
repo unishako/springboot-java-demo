@@ -14,7 +14,7 @@ public class UserController {
     private final UserService userService;
 
     @GetMapping("/search")
-    public List<Users> search(@RequestParam (required = false) String name) {
+    public List<UserDto> search(@RequestParam (required = false) String name) {
         return userService.search(name);
     }
 
