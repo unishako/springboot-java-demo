@@ -1,5 +1,6 @@
 package com.github.unishako.demo.api;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -7,7 +8,10 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.config.http.SessionCreationPolicy;
 
 @EnableWebSecurity
+@RequiredArgsConstructor
 public class ApiBasicAuthConfig extends WebSecurityConfigurerAdapter {
+
+    private final ApiBasicAuthProvider apiBasicAuthProvider;
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -15,15 +19,19 @@ public class ApiBasicAuthConfig extends WebSecurityConfigurerAdapter {
         // CSRF対策機能を無効化
         http.csrf().disable();
 
-        http.antMatcher("/users/auth");
-        http.authorizeRequests().anyRequest().authenticated();
-        http.httpBasic();
+        http.antMatcher("/users/auth")
+                .authorizeRequests().anyRequest().authenticated()
+                .and()
+                .httpBasic();
 
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
     }
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) {
-        auth.authenticationProvider(new ApiBasicAuthProvider());
+        auth.authenticationProvider(apiBasicAuthProvider);
+        //パスワードは平文でDBに登録する為、「NoOpPasswordEncoder」を設定する
+//        auth.userDetailsService(service)
+//                .passwordEncoder(NoOpPasswordEncoder.getInstance());
     }
 }

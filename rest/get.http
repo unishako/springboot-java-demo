@@ -7,7 +7,7 @@ Accept: application/json
 
 ###
 GET http://localhost:8080/api/users/auth
-Authorization: Basic user password
+Authorization: Basic 2 22222
 
 ###
 GET http://localhost:8080/api/users/auth

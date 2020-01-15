@@ -11,4 +11,6 @@ import java.util.List;
 public interface UsersRepository extends JpaRepository<Users, BigDecimal> {
 
     List<Users> findByNameContaining(String name);
+
+    Users findByIdAndPassword(BigDecimal id, String password);
 }

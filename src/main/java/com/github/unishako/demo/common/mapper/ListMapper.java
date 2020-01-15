@@ -14,7 +14,7 @@ public class ListMapper {
     private final ModelMapper modelMapper;
 
     public <T, U> List<U> convertDto(List<T> in, Class<U> type) {
-        List<U> out = new ArrayList<U>();
+        List<U> out = new ArrayList<>();
         for (T t : in) {
             out.add(modelMapper.map(t, type));
         }
