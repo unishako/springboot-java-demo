@@ -4,6 +4,7 @@ import com.github.unishako.demo.persistence.entity.Users;
 import com.github.unishako.demo.persistence.repository.UsersRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.java.Log;
+import org.apache.logging.log4j.util.Strings;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -36,8 +37,13 @@ public class ApiBasicAuthProvider implements AuthenticationProvider {
 
         Users users = usersRepository.findByIdAndPassword(inputName, inputPassword);
 
-        final BigDecimal name = users.getId(); // 正しいユーザ名
-        final String password = users.getPassword(); // 正しいパスワード
+        BigDecimal name = BigDecimal.ZERO;
+        String password = Strings.EMPTY;
+
+        if (users != null) {
+            name = users.getId(); // 正しいユーザ名
+            password = users.getPassword(); // 正しいパスワード
+        }
 
         log.info("Name=" + inputName);
         log.info("Password=" + inputPassword);

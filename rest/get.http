@@ -7,10 +7,10 @@ Accept: application/json
 
 ###
 GET http://localhost:8080/api/users/auth
-Authorization: Basic 2 22222
+Authorization: Basic 1 22222
 
-###
+### 1:11111をBase64にエンコード
 GET http://localhost:8080/api/users/auth
-Authorization: Basic dXNlcjpwYXNzd2Q=
+Authorization: Basic MToxMTExMQ==
 
 ###
