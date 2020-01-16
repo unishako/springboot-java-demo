@@ -15,14 +15,9 @@ import org.springframework.stereotype.Component;
 import java.math.BigDecimal;
 
 @Component
-@Log
 @RequiredArgsConstructor
+@Log
 public class ApiBasicAuthProvider implements AuthenticationProvider {
-
-    //https://qiita.com/niwasawa/items/fc0f23e97f7fb2a8d3be
-    //https://qiita.com/aikumi/items/256b7892effd5c92a39f
-    //https://springboot-domamaster-maintenance-sample.readthedocs.io/ja/latest/05-spring_security.html
-    //https://qiita.com/tharao/items/cc9276780d69387cfefa
 
     private final UsersRepository usersRepository;
 
@@ -45,8 +40,8 @@ public class ApiBasicAuthProvider implements AuthenticationProvider {
             password = users.getPassword(); // 正しいパスワード
         }
 
-        log.info("Name=" + inputName);
-        log.info("Password=" + inputPassword);
+        log.info("Name=" + name);
+        log.info("Password=" + password);
 
         if (!name.equals(inputName) || !password.equals(inputPassword)) {
             throw new BadCredentialsException("");

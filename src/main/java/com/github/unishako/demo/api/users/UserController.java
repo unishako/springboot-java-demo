@@ -1,6 +1,5 @@
 package com.github.unishako.demo.api.users;
 
-import com.github.unishako.demo.persistence.entity.Users;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,6 +19,6 @@ public class UserController {
 
     @GetMapping("/auth")
     public void auth(@RequestHeader("Authorization") String authorization) {
-
+        userService.auth(authorization);
     }
 }

@@ -5,6 +5,7 @@ import com.github.unishako.demo.common.mapper.ListMapper;
 import com.github.unishako.demo.persistence.entity.Users;
 import com.github.unishako.demo.persistence.repository.UsersRepository;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.java.Log;
 import org.apache.logging.log4j.util.Strings;
 import org.springframework.stereotype.Service;
 
@@ -12,6 +13,7 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
+@Log
 public class UserService {
 
     private final UsersRepository usersRepository;
@@ -19,9 +21,6 @@ public class UserService {
     private final ListMapper listMapper;
 
     public List<UserDto> search(String name) {
-
-        // 認証チェック
-        //throw new UnauthorizedException();
 
         // 入力チェック
         //throw new BadRequestException();
@@ -48,6 +47,10 @@ public class UserService {
             throw new NotFoundException();
         }
         return list;
+    }
+
+    public void auth(String authorization) {
+        log.info("Authorization=" + authorization);
     }
 
 }
