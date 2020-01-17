@@ -9,11 +9,11 @@ import java.util.List;
 
 @Component
 @RequiredArgsConstructor
-public class ListMapper {
+public class MapperUtils {
 
     private final ModelMapper modelMapper;
 
-    public <T, U> List<U> convertDto(List<T> in, Class<U> type) {
+    public <T, U> List<U> convertList(List<T> in, Class<U> type) {
         List<U> out = new ArrayList<>();
         in.forEach(e -> out.add(modelMapper.map(e, type)));
         return out;

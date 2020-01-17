@@ -1,7 +1,7 @@
 package com.github.unishako.demo.api.users;
 
 import com.github.unishako.demo.common.exception.NotFoundException;
-import com.github.unishako.demo.common.mapper.ListMapper;
+import com.github.unishako.demo.common.mapper.MapperUtils;
 import com.github.unishako.demo.persistence.entity.Users;
 import com.github.unishako.demo.persistence.repository.UsersRepository;
 import lombok.RequiredArgsConstructor;
@@ -18,7 +18,7 @@ public class UserService {
 
     private final UsersRepository usersRepository;
 
-    private final ListMapper listMapper;
+    private final MapperUtils mapperUtils;
 
     public List<UserDto> search(String name) {
 
@@ -29,7 +29,7 @@ public class UserService {
         List<Users> list = getAllUsers(name);
 
         // Entity->Dto変換
-        List<UserDto> json = listMapper.convertDto(list, UserDto.class);
+        List<UserDto> json = mapperUtils.convertList(list, UserDto.class);
 
         return json;
     }
